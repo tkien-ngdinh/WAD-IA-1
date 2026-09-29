@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "format": "npx --yes prettier@3.3.3 --check src test",
+    "format:fix": "npx --yes prettier@3.3.3 --write src test"
   }
 }
