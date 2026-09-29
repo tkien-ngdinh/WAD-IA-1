@@ -6,7 +6,7 @@ Implement `cartTotal(items, options)` in `src/cart.js` and its tests in `test/ca
 - `src/cart.js`
 - `test/cart.test.js`
 
-Do not touch `README.md`, `package.json`, `.prettierrc`, `CLAUDE.md`, `.github/`, or any other file.
+Do not touch `README.md`, `package.json`, `.prettierrc`, `AGENTS.md`, `.github/`, or any other file.
 
 ## Contract
 - `items`: array of `{ name, price, qty }`
