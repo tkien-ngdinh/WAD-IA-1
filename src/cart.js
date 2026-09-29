@@ -1,6 +1,7 @@
 export function cartTotal(items, options) {
   const { vatRate = 0, freeShipFrom = Infinity, shipFee = 0 } = options ?? {}
 
+  if (items.length === 0) return 0
   let subtotal = 0
   for (const item of items) {
     if (!Number.isFinite(item.price) || item.price < 0) {
@@ -11,8 +12,6 @@ export function cartTotal(items, options) {
     }
     subtotal += item.price * item.qty
   }
-
-  if (subtotal === 0) return 0
 
   const vat = subtotal * vatRate
   const shipping = subtotal >= freeShipFrom ? 0 : shipFee

@@ -34,9 +34,9 @@ test('subtotal just below threshold pays shipping', () => {
 })
 
 test('rounds to whole dong', () => {
-  const items = [{ name: 'x', price: 100005, qty: 1 }]
+  const items = [{ name: 'x', price: 100010, qty: 1 }]
   const options = { vatRate: 0.08, freeShipFrom: Infinity, shipFee: 0 }
-  assert.equal(cartTotal(items, options), 108005)
+  assert.equal(cartTotal(items, options), 108011)
 })
 
 test('negative price throws RangeError', () => {
@@ -52,4 +52,10 @@ test('qty 1.5 throws RangeError', () => {
 test('qty 0 throws RangeError', () => {
   const items = [{ name: 'x', price: 100, qty: 0 }]
   assert.throws(() => cartTotal(items, {}), RangeError)
+})
+
+test('a cart with only a free item still pays shipping', () => {
+  const items = [{ name: 'x', price: 0, qty: 1 }]
+  const options = { vatRate: 0.08, freeShipFrom: 500000, shipFee: 30000 }
+  assert.equal(cartTotal(items, options), 30000)
 })
